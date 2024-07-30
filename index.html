@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogo da Memória</title>
+
+        <!-- Remixicons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin=""/>
+
+        <link rel="stylesheet" href="styles/jogo.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="menu-inicial">
+            <i class="ri-play-circle-fill"></i>
+        </div>
+
+        <div class="menu-modos-de-jogo">
+            <div class="titulo">
+                <img src="https://chromebookabel.github.io/alfabeltizando/imagens/modos-de-jogo_titulo.png">
+            </div>
+
+            <div id="modos-de-jogo">
+                <div class="modo modo1">
+                    <div class="img-modo"></div>
+                    <div class="infos-modo">
+                    </div>
+                </div>
+                <div class="modo modo2">
+                    <div class="img-modo"></div>
+                    <div class="infos-modo">
+                    </div>
+                </div>
+                <div class="modo modo3">
+                    <div class="img-modo"></div>
+                    <div class="infos-modo">                  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="jogo">
+            <div class="menu menu-de-pausa">
+
+                <div class="botoes-controle">
+                    <button class="btn-menu-pausa encerrar-jogo"><i class="ri-logout-box-line"></i><span>Sair</span></button>
+                    <button class="btn-menu-pausa retomar-jogo"><i class="ri-arrow-go-back-fill"></i><span>Continuar</span></button>
+                    <button class="btn-menu-pausa reiniciar-jogo"><i class="ri-loop-left-line"></i><span>Reiniciar</span></button>
+                </div>
+            </div>
+
+            <div class="menu menu-conseguiu">
+                <div class="conseguiu-gif"></div>
+
+                <img class="img-conseguiu" src="https://chromebookabel.github.io/alfabeltizando/imagens/voce-conseguiu.png">                
+
+                <div class="botoes-controle">
+                    <button class="btn-menu-conseguiu encerrar-jogo"><i class="ri-logout-box-line"></i><span>Sair</span></button>
+                    <button class="btn-menu-conseguiu reiniciar-jogo"><i class="ri-loop-left-line"></i><span>Reiniciar</span></button>
+                </div>
+            </div>
+
+            <div class="menu menu-tempo-acabou">
+                <h2>Poxa... O tempo acabou!</h2>
+                
+                <img class="img-tempo-acabou" src="https://chromebookabel.github.io/alfabeltizando/imagens/despertador.png">
+
+                <div class="botoes-controle">
+                    <button class="btn-menu-tempo-acabou encerrar-jogo"><i class="ri-logout-box-line"></i><span>Sair</span></button>
+                    <button class="btn-menu-tempo-acabou reiniciar-jogo"><i class="ri-loop-left-line"></i><span>Reiniciar</span></button>
+                </div>
+            </div>
+
+            <header>
+                <div id="cronometro">
+                    <span class="minutos">00</span><span>:</span><span class="segundos">15</span>
+                </div>
+                <i class="ri-pause-fill"></i>
+            </header>
+            
+            <div id="cartas">
+            </div>
+
+            <div class="fundo"></div>
+        </div>
+    
+        <script src="js/jogo.js"></script>
+    </body>
+</html>

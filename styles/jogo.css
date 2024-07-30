@@ -1,0 +1,386 @@
+* {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+body {
+  background-color: #FFEFAB;
+}
+
+#menu-inicial {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  width: 800px;
+  height: 650px;
+  background-image: url("https://chromebookabel.github.io/alfabeltizando/imagens/fundo-menu-inicial.png");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#menu-inicial .ri-play-circle-fill {
+  display: block;
+  grid-row: 8;
+  grid-column: 2/3;
+  justify-self: center;
+  align-self: center;
+  color: #ffc832;
+  font-size: 6em;
+}
+#menu-inicial .ri-play-circle-fill:hover, #menu-inicial .ri-play-circle-fill:active {
+  color: #ffbb00;
+  cursor: pointer;
+}
+
+.menu-modos-de-jogo {
+  display: none;
+  width: 70%;
+  height: 650px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.menu-modos-de-jogo .titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  height: 5em;
+  background-color: white;
+}
+.menu-modos-de-jogo .titulo img {
+  width: 25em;
+}
+.menu-modos-de-jogo #modos-de-jogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+.menu-modos-de-jogo .modo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 15em;
+  height: 20em;
+  background-color: #ffffed;
+  border-radius: 1em;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+.menu-modos-de-jogo .modo:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.menu-modos-de-jogo .modo .img-modo {
+  width: 15em;
+  height: 15em;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  transition: all 1s ease-in-out;
+}
+.menu-modos-de-jogo .modo .infos-modo {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 10em;
+  height: 5em;
+}
+.menu-modos-de-jogo .modo1:hover {
+  border: 5px solid #01afd6;
+}
+.menu-modos-de-jogo .modo1 .img-modo {
+  background-image: url("https://chromebookabel.github.io/alfabeltizando//imagens/modo1/modo1_capa.png");
+}
+.menu-modos-de-jogo .modo1 .img-modo:hover {
+  background-image: url("https://chromebookabel.github.io/alfabeltizando//imagens/modo1/modo1_gameplay.png");
+}
+.menu-modos-de-jogo .modo1 .infos-modo {
+  background-image: url("https://chromebookabel.github.io/alfabeltizando/imagens/modo1/modo1_titulo.png");
+}
+.menu-modos-de-jogo .modo2:hover {
+  border: 5px solid orange;
+}
+.menu-modos-de-jogo .modo2 .img-modo {
+  background-image: url("https://chromebookabel.github.io/alfabeltizando/imagens/modo2/modo2_capa.png");
+}
+.menu-modos-de-jogo .modo2 .img-modo:hover {
+  background-image: url("https://chromebookabel.github.io/alfabeltizando/imagens/modo2/modo2_gameplay.png");
+}
+.menu-modos-de-jogo .modo2 .infos-modo {
+  background-image: url("https://chromebookabel.github.io/alfabeltizando/imagens/modo2/modo2_titulo.png");
+}
+.menu-modos-de-jogo .modo3:hover {
+  border: 5px solid #c4da01;
+}
+.menu-modos-de-jogo .modo3 .img-modo {
+  background-image: url("https://chromebookabel.github.io/alfabeltizando/imagens/modo3/modo3_capa.png");
+}
+.menu-modos-de-jogo .modo3 .img-modo:hover {
+  background-image: url("https://chromebookabel.github.io/alfabeltizando/imagens/modo3/modo3_gameplay.png");
+}
+.menu-modos-de-jogo .modo3 .infos-modo {
+  background-image: url("https://chromebookabel.github.io/alfabeltizando/imagens/modo3/modo3_titulo.png");
+}
+
+.menu-modos-de-jogo-ativo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+}
+
+#jogo {
+  display: none;
+  min-height: 100vh;
+  position: relative;
+}
+#jogo.jogo-ativo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.menu {
+  width: 500px;
+  background-color: #0865BF;
+  border: 5px solid white;
+  border-radius: 1.5em;
+  padding: 4em 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+}
+.menu .botoes-controle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  z-index: 400;
+}
+.menu .botoes-controle .btn-menu-pausa, .menu .botoes-controle .btn-menu-conseguiu, .menu .botoes-controle .btn-menu-tempo-acabou {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  width: 12em;
+  height: 3em;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border: 2px solid white;
+  border-radius: 1em;
+  padding: 1.8em 0;
+  position: relative;
+  overflow: hidden;
+}
+.menu .botoes-controle .btn-menu-pausa:hover, .menu .botoes-controle .btn-menu-pausa:active, .menu .botoes-controle .btn-menu-conseguiu:hover, .menu .botoes-controle .btn-menu-conseguiu:active, .menu .botoes-controle .btn-menu-tempo-acabou:hover, .menu .botoes-controle .btn-menu-tempo-acabou:active {
+  cursor: pointer;
+}
+.menu .botoes-controle .btn-menu-pausa::before, .menu .botoes-controle .btn-menu-conseguiu::before, .menu .botoes-controle .btn-menu-tempo-acabou::before {
+  content: " ";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 0px;
+  height: 4em;
+  background-color: #ff8a05;
+  transition: all 1s;
+  z-index: -1;
+}
+.menu .botoes-controle .btn-menu-pausa:hover::before, .menu .botoes-controle .btn-menu-conseguiu:hover::before, .menu .botoes-controle .btn-menu-tempo-acabou:hover::before {
+  width: 100%;
+}
+.menu .botoes-controle .btn-menu-pausa i, .menu .botoes-controle .btn-menu-conseguiu i, .menu .botoes-controle .btn-menu-tempo-acabou i {
+  color: white;
+  font-size: 2em;
+}
+.menu .botoes-controle .btn-menu-pausa span, .menu .botoes-controle .btn-menu-conseguiu span, .menu .botoes-controle .btn-menu-tempo-acabou span {
+  color: white;
+  font-size: 1.2em;
+}
+
+.menu-de-pausa {
+  display: none;
+  padding: 7em 0;
+}
+.menu-de-pausa .botoes-controle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.menu-de-pausa .botoes-controle .btn-menu-pausa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15em;
+}
+
+.menu-pausa-ativo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-conseguiu {
+  display: none;
+}
+.menu-conseguiu .img-conseguiu {
+  width: 20em;
+  z-index: 400;
+}
+.menu-conseguiu .conseguiu-gif {
+  width: 100%;
+  height: 100%;
+  background-image: url("https://chromebookabel.github.io/alfabeltizando/imagens/confetes.gif");
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  z-index: 350;
+}
+
+.menu-conseguiu-ativo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.menu-tempo-acabou {
+  display: none;
+}
+.menu-tempo-acabou .img-tempo-acabou {
+  width: 18em;
+}
+
+.menu-tempo-acabou-ativo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.fundo {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 80%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.fundo-ativo {
+  display: block;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+  width: 100%;
+  max-width: 800px;
+  background-color: #F7C53A;
+  margin: auto;
+  padding: 1.5em 0;
+  position: relative;
+}
+header #cronometro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
+header #cronometro span {
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+header i {
+  display: block;
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  border-radius: 50%;
+  padding: 0.2em;
+  position: absolute;
+  right: 0.5em;
+  transition: all ease-in-out 0.3s;
+}
+header i:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #F7C53A;
+}
+
+#cartas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.carta {
+  aspect-ratio: 1/1;
+  width: 100%;
+  background-color: #ccc;
+  border-radius: 5px;
+  position: relative;
+  transition: all 400ms ease;
+  transform-style: preserve-3d;
+}
+
+.face {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  position: absolute;
+  transition: all 400ms ease;
+}
+
+.frente {
+  transform: rotateY(180deg);
+}
+
+.traseira {
+  background-image: url("https://chromebookabel.github.io/alfabeltizando/imagens/traseira.png");
+  backface-visibility: hidden;
+}
+
+.revelar-carta {
+  transform: rotateY(180deg);
+}
+
+.carta-desabilitada {
+  filter: saturate(0);
+  opacity: 0.5;
+}/*# sourceMappingURL=jogo.css.map */
