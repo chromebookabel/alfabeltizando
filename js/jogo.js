@@ -4,6 +4,7 @@ const jogo = document.querySelector('#jogo')
 const menuPausa = document.querySelector('.menu-de-pausa')
 const menuConseguiu = document.querySelector('.menu-conseguiu')
 const menuTempoAcabou= document.querySelector('.menu-tempo-acabou')
+const menuModos= document.querySelector('.menu-modos-de-jogo')
 const fundo = document.querySelector('.fundo')
 const body = document.querySelector('body')
 
@@ -12,6 +13,9 @@ const btnPausar = document.querySelector('.ri-pause-fill')
 const botoesEncerrar = document.querySelectorAll('.encerrar-jogo')
 const btnRetomar = document.querySelector('.retomar-jogo')
 const botoesReiniciar = document.querySelectorAll('.reiniciar-jogo')
+const btnModo1 = document.querySelector('.modo1') 
+const btnModo2 = document.querySelector('.modo2')
+const btnModo3 = document.querySelector('.modo3')
 
 let loop
 let minutos = 0
@@ -20,6 +24,7 @@ let primeiraCarta = ''
 let segundaCarta = ''
 let jogoEncerrado = false
 let contRegressiva = false
+let modoDeJogo = ''
 
 const imagensModo1 = [
     'bola',
@@ -82,9 +87,8 @@ const checarFimDeJogo = () => {
     const cartasDesabilitadas = document.querySelectorAll('.carta-desabilitada')
 
     setTimeout(() => {
-        if(cartasDesabilitadas.length == imagensModo3.length) {
+        if( (modoDeJogo === 'modo1' && (cartasDesabilitadas.length == imagensModo1.length)) || (modoDeJogo === 'modo2' && (cartasDesabilitadas.length == imagensModo2.length)) || (modoDeJogo === 'modo3' && (cartasDesabilitadas.length == imagensModo3.length)) ) {
             clearInterval(loop)
-            //alert('Parabéns! Você conseguiu!')
             ativarMenuSecundario('conseguiu')
             jogoEncerrado = true
         }
@@ -137,7 +141,7 @@ const criarCarta = (imagem) => {
     const traseira = criarElemento('div', 'face traseira')
 
     //frente.style.backgroundImage = `url('../imagens/modo3/${imagem}.png')`
-    frente.style.backgroundImage = `url('https://chromebookabel.github.io/alfabeltizando/imagens/modo3/${imagem}.png')`
+    frente.style.backgroundImage = `url('https://chromebookabel.github.io/alfabeltizando/imagens/${modoDeJogo}/${imagem}.png')`
 
     carta.appendChild(frente)
     carta.appendChild(traseira)
@@ -153,7 +157,19 @@ const criarCarta = (imagem) => {
 const carregarJogo = () => {
     jogoEncerrado = false
 
-    const cartasSortidas = imagensModo3.sort( () => Math.random() - 0.5)
+    //const cartasSortidas = imagensModo3.sort( () => Math.random() - 0.5)
+
+    let cartasSortidas
+
+    if(modoDeJogo === 'modo1') {
+        cartasSortidas = imagensModo1.sort( () => Math.random() - 0.5)
+    }
+    else if(modoDeJogo === 'modo2') {
+        cartasSortidas = imagensModo2.sort( () => Math.random() - 0.5)
+    }
+    else if(modoDeJogo === 'modo3') {
+        cartasSortidas = imagensModo3.sort( () => Math.random() - 0.5)
+    }
 
     cartasSortidas.forEach((imagem) => {
         const carta = criarCarta(imagem)
@@ -371,18 +387,30 @@ botoesReiniciar.forEach(botao => {
 })
 
 
-const iniciarJogo = () => {
-    menuInicial.style.display = 'none'
+const iniciarJogo = (modo) => {
+    modoDeJogo = modo
+
+    menuModos.classList.remove('menu-modos-de-jogo-ativo')
+
     alterarDisplayDoBody('padrao')
     jogo.classList.add('jogo-ativo')
 
     carregarJogo()
 }
-btnIniciarJogo.addEventListener('click', iniciarJogo)
+btnModo1.addEventListener('click', () => iniciarJogo('modo1'))
+btnModo2.addEventListener('click', () => iniciarJogo('modo2'))
+btnModo3.addEventListener('click', () => iniciarJogo('modo3'))
+
+const ativarMenuModos = () => {
+    menuInicial.style.display = 'none'
+    menuModos.classList.add('menu-modos-de-jogo-ativo')
+}
+btnIniciarJogo.addEventListener('click', ativarMenuModos)
 
 
 const encerrarJogo = (menuAtivo) => {
     jogoEncerrado = true
+    modoDeJogo = ''
 
     desativarMenuSecundario(menuAtivo)
     jogo.classList.remove('jogo-ativo')
